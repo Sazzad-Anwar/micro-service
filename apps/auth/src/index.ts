@@ -5,6 +5,7 @@ import { jwt } from 'hono/jwt'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
 import { secureHeaders } from 'hono/secure-headers'
+import login from './routes/login'
 import registration from './routes/registration'
 import user from './routes/user'
 
@@ -24,7 +25,14 @@ app.get('/', (ctx) => {
   })
 })
 app.route('/registration', registration)
+app.route('/login', login)
 app.use(jwt({ secret: env.JWT_SECRET })).route('/user', user)
+app.use(async (ctx) => {
+  return ctx.json({
+    data: null,
+    message: `${ctx.req.method}:${ctx.req.url} not found`,
+  })
+})
 
 export default {
   port: 3001,
