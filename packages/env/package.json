@@ -1,0 +1,15 @@
+{
+  "name": "@repo/env",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "cp .env.dev .env && bun run ./index.ts",
+    "build": "cp .env.prod .env && bun build ./index.ts --outdir ./build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

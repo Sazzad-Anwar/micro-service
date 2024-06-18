@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  caddy:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - service-a
+      - service-b
+      - frontend
+
+  service-auth:
+    image: your-service-a-image
+    container_name: service-a
+
+  service-b:
+    image: your-service-b-image
+    container_name: service-b
+
+  frontend:
+    image: your-frontend-image
+    container_name: frontend

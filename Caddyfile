@@ -1,0 +1,13 @@
+:80 {
+    @authApi {
+        path /api/v1/auth*
+    }
+
+    handle @authApi {
+        reverse_proxy @authApi auth:3001 {
+            lb_policy round_robin
+            lb_try_duration 30ms
+            lb_try_interval 2s
+        }
+    }
+}
