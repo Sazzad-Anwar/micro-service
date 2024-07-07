@@ -1,4 +1,4 @@
-:80 {
+:3000 {
     @authApi {
         path /api/v1/auth*
     }

@@ -1,10 +1,12 @@
 {
   "name": "auth",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "load-test": "autocannon http://localhost:3001/api/v1/auth -d 10 -c 30"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.2",
+    "autocannon": "^7.15.0",
     "bcrypt": "^5.1.1",
     "drizzle-orm": "^0.31.2",
     "hono": "^4.4.6"
